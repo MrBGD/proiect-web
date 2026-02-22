@@ -167,7 +167,7 @@ window.onload = function () {
     }
 
     async function scanUrl(url) {
-        const apiKey = '560c1b7c6c927ddc4226e770d374c668426f3099190a9cb15542474286f52789'; 
+        const apiKey = ''; 
 
         try {
             const requestTime = new Date();
