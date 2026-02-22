@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile</title>
+        <link rel="stylesheet", href="{{url_for('static', filename='styles/profile.css')}}">
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+            <h1>User Profile</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/page">Dashboard</a></li>
+                    <li>
+                        <a href="#">Account</a>
+                        <ul class="dropdown">
+                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="#">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="profile-layout">
+                <aside class="profile-sidebar">
+                    <div class="avatar-circle">
+                        <span class="username">{{username}}</span>
+                    </div>
+                    <h2>{{username}}</h2>
+                    <p class="role">{{role}}</p>
+                    <button class="action-btn">Edit Photo</button>
+                </aside>
+            </div>
+        </main>
+
+        <section class="profile-details">
+            <h3>Accound Details</h3>
+            <ul class="settings-list">
+                <li>
+                    <span>Username</span>
+                    <strong>{{username}}</strong>
+                </li>
+                <li>
+                    <span>Role</span>
+                    <strong>{{ role }}</strong>
+                </li>
+                <li>
+                    <span>Email</span>
+                    <strong>user@example.com</strong>
+                </li>
+                <li>
+                    <span>Membership</span>
+                    <strong>Gold Tier</strong>
+                    </li>
+            </ul>
+
+
+
+        </section>
+        <footer>
+            <p>&copy; 2025 Web Project.</p>
+        </footer>
+        </div>
+    </body>
+</html>

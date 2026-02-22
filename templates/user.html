@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="design2.0.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome, user!</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <a href="#">Profile</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="dashboard">
+            <h2>Your Dashboard</h2>
+            <a class="logout-btn" href="/logout">Logout</a>
+        </section>
+
+        <section class="search-section">
+            <form class="search-form" method="GET">
+                <input type="text" name="search_item" class="search-field" placeholder="Search something...">
+            </form>
+        </section>
+        {% if search_item %}
+        <section class="search-result">
+            <h3>Search Query Result:</h3>
+            <p>{{ search_item }}</p>
+
+        <main>
+
+            <aside>
+                <h3>Tips</h3>
+                <p>Check your recent updates and manage your account settings easily!</p>
+            </aside>
+        </main>
+        
+
+        <footer>
+            <p>&copy; 2025 User Dashboard | All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

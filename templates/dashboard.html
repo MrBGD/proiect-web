@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/design2.0.css') }}">
+    
+    <style>
+        #login_section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .login-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #6C63AC;
+            backdrop-filter: blur(10px);
+        }
+        .valid-input { border: 2px solid #2ecc71 !important; }
+        .invalid-input { border: 2px solid #e74c3c !important; }
+    </style>
+</head>
+
+<body class="dark-mode"> <div class="container">
+
+        <div id="login_section">
+            <div class="login-card">
+                <h2>🔒 Security Access</h2>
+                <p>Please log in to access the Dashboard</p>
+                <input type="text" id="username" class="search-field" placeholder="Username (admin)" style="margin-bottom: 10px; display:block; margin: 10px auto;">
+                <input type="password" id="password" class="search-field" placeholder="Password (123)" style="margin-bottom: 10px; display:block; margin: 10px auto;">
+                <button id="login_btn" class="logout-btn" style="position: relative; right: auto; top: auto;">Login</button>
+            </div>
+        </div>
+
+        <div id="app_section" style="display: none;">
+            
+            <header class="header">
+                <h1>Welcome, admin!</h1>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>
+                            <a href="#">Profile</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Profile & Settings</a></li>
+                                <li><a href="#">History</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" id="theme_toggle">Toggle Theme</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section class="dashboard">
+                <h2>Your Dashboard</h2>
+                <button id="logout_btn" class="logout-btn">Lock Dashboard</button>
+            </section>
+
+            <section class="search-section">
+                <form class="search-form" method="GET">
+                    <input type="text" name="search_item" id="search" class="search-field" placeholder="Search something...">
+                </form>
+            </section>
+
+            {% if admin_query %}
+            <div class="search-result">
+                <h3>Your Search Query Result:</h3>
+                <p>{{ admin_query}}</p>
+            </div>
+            {% endif %}
+
+            <main>
+                <section class="analytics">
+                    <h2>Query Analytics</h2>
+                    <h3>All User Search Queries:</h3>
+                    
+                    {% if all_queries %}
+                        <ul>
+                            {% for item in all_queries %}
+                                <li>{{ item}}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No user queries have been received yet.</p>
+                    {% endif %}
+                </section>
+            
+                <aside>
+                    <h3>Tips</h3>
+                    <p>Check your recent updates and manage your account settings easily!</p>
+                </aside>
+            </main>
+            
+            <section class="url_validation" style="text-align: center; margin-top: 30px;">
+                <h3>URL Scanner</h3>
+                <p>Enter a URL to scan for threats (VirusTotal API):</p>
+                
+                <div class="input-group" style="margin: 20px 0;">
+                    <input type="text" id="url" class="search-field" placeholder="https://example.com" style="width: 50%;">
+                </div>
+
+                <div style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <canvas id="loaderCanvas" width="50" height="50" style="display:none;"></canvas>
+                    <span id="apiResult" style="margin-left: 10px; font-weight: bold;"></span>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <button id="save_btn" class="logout-btn" style="position: static;">Scan URL</button>
+                    <button id="clear_btn" class="logout-btn" style="position: static; background: #e74c3c;">Clear</button>
+                </div>
+                
+                </section>
+
+            <footer>
+                <p> 2025 Admin Dashboard | All rights reserved.</p>
+            </footer>
+        </div> </div>
+
+    <script src="{{ url_for('static', filename='queries.js') }}"></script>
+</body>
+</html>
